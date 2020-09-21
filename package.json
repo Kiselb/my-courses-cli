@@ -1,7 +1,7 @@
 {
   "name": "my-courses-cli",
   "version": "1.0.0",
-  "description": "Homwork CLI of the OTUS education course node-2020-06",
+  "description": "Homework CLI of the OTUS education course node-2020-06",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Kiselb/my-courses-cli/issues"
   },
-  "homepage": "https://github.com/Kiselb/my-courses-cli#readme"
+  "homepage": "https://github.com/Kiselb/my-courses-cli#readme",
+  "dependencies": {
+    "semver": "^7.3.2"
+  }
 }
