@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Kiselb/my-courses-cli#readme",
   "dependencies": {
+    "inquirer": "^7.3.3",
     "semver": "^7.3.2"
   }
 }

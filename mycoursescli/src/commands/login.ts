@@ -17,8 +17,8 @@ export default class Login extends Command {
         name = await cli.prompt('Name')
       }
       password = await cli.prompt('Password', {type: 'hide'})
-      const response = await axios.post(`http://127.0.0.1:5000/login`, { name: name, password: password })
-      await Auth.login(response.headers['set-cookie'][0].split(';')[0].split('=')[1])
+      const response = await axios.post(`http://127.0.0.1:5100/login`, { name: name, password: password })
+      await Auth.login(response.headers['authorization'])
       this.log(`${chalk.green('[SUCCESS]')} You are logged in`)
     } catch(err) {
       if (err.response.status === 401) {

@@ -31,11 +31,27 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`mycoursescli add ENTITY`](#mycoursescli-add-entity)
 * [`mycoursescli help [COMMAND]`](#mycoursescli-help-command)
 * [`mycoursescli login [NAME]`](#mycoursescli-login-name)
 * [`mycoursescli logout`](#mycoursescli-logout)
 * [`mycoursescli mycourses`](#mycoursescli-mycourses)
-* [`mycoursescli mystreams [FILE]`](#mycoursescli-mystreams-file)
+* [`mycoursescli mystreams`](#mycoursescli-mystreams)
+* [`mycoursescli update [FILE]`](#mycoursescli-update-file)
+
+## `mycoursescli add ENTITY`
+
+Add entity (course, stream or user) to the database
+
+```
+USAGE
+  $ mycoursescli add ENTITY
+
+ARGUMENTS
+  ENTITY  (course|stream) The type of the added entity
+```
+
+_See code: [src\commands\add.ts](https://github.com/my-courses-cli/mycoursescli/blob/v1.0.0/src\commands\add.ts)_
 
 ## `mycoursescli help [COMMAND]`
 
@@ -67,7 +83,7 @@ _See code: [src\commands\login.ts](https://github.com/my-courses-cli/mycoursescl
 
 ## `mycoursescli logout`
 
-Logout my-courses application
+Logout from my-courses application
 
 ```
 USAGE
@@ -87,13 +103,24 @@ USAGE
 
 _See code: [src\commands\mycourses.ts](https://github.com/my-courses-cli/mycoursescli/blob/v1.0.0/src\commands\mycourses.ts)_
 
-## `mycoursescli mystreams [FILE]`
+## `mycoursescli mystreams`
+
+Display list of private streams
+
+```
+USAGE
+  $ mycoursescli mystreams
+```
+
+_See code: [src\commands\mystreams.ts](https://github.com/my-courses-cli/mycoursescli/blob/v1.0.0/src\commands\mystreams.ts)_
+
+## `mycoursescli update [FILE]`
 
 describe the command here
 
 ```
 USAGE
-  $ mycoursescli mystreams [FILE]
+  $ mycoursescli update [FILE]
 
 OPTIONS
   -f, --force
@@ -101,5 +128,5 @@ OPTIONS
   -n, --name=name  name to print
 ```
 
-_See code: [src\commands\mystreams.ts](https://github.com/my-courses-cli/mycoursescli/blob/v1.0.0/src\commands\mystreams.ts)_
+_See code: [src\commands\update.ts](https://github.com/my-courses-cli/mycoursescli/blob/v1.0.0/src\commands\update.ts)_
 <!-- commandsstop -->
