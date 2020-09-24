@@ -44,6 +44,11 @@ export default class Update extends Command {
   }
   async run() {
     const {args} = this.parse(Update)
+    const token: string = await Auth.token()
+    if (!token) {
+      this.log(`${chalk.red('[FAILED]')} You not yet authorized. Use login command`)
+      return
+    }
     if (args.entity === 'course') {
       const courseParams: any = await inquirer.prompt([
         {
