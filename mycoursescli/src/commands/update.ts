@@ -7,6 +7,8 @@ import { Auth } from '../auth'
 
 inquirer.registerPrompt('datepicker', require('inquirer-datepicker'));
 
+const { API_PATH } = require('../../config.js');
+
 export default class Update extends Command {
   static description = 'Update entity (course, stream or user)'
   static strict = true
@@ -27,7 +29,7 @@ export default class Update extends Command {
   private async updateCourse(params: any) {
     try {
       const token: string = await Auth.token()
-      const response = await axios.put(`http://127.0.0.1:5100/courses/${params.id}`, { name: params.name, description: params.description }, { headers: { 'Authorization': token }})
+      const response = await axios.put(`${API_PATH}/courses/${params.id}`, { name: params.name, description: params.description }, { headers: { 'Authorization': token }})
       await this.log(`${chalk.green('[SUCCESS]')} Course updated`)
     } catch(err) {
       this.log(`${chalk.red('[ERROR]')} ${err.message}`)
@@ -36,7 +38,7 @@ export default class Update extends Command {
   private async updateStream(params: any) {
     try {
       const token: string = await Auth.token()
-      const response = await axios.put(`http://127.0.0.1:5100/streams/${params.id}`, { name: params.title, start: params.start, finish: params.finish }, { headers: { 'Authorization': token }})
+      const response = await axios.put(`${API_PATH}/streams/${params.id}`, { name: params.title, start: params.start, finish: params.finish }, { headers: { 'Authorization': token }})
       await this.log(`${chalk.green('[SUCCESS]')} Course updated`)
     } catch(err) {
       this.log(`${chalk.red('[ERROR]')} ${err.message}`)

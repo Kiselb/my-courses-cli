@@ -6,6 +6,7 @@ import * as inquirer from 'inquirer'
 import { Auth } from '../auth'
 
 inquirer.registerPrompt('datepicker', require('inquirer-datepicker'));
+const { API_PATH } = require('../../config.js');
 
 export default class Add extends Command {
   static description = 'Add entity (course, stream or user) to the database'
@@ -22,7 +23,7 @@ export default class Add extends Command {
   private async addCourse(params: any) {
     try {
       const token: string = await Auth.token()
-      const response = await axios.post(`http://127.0.0.1:5100/courses`, { name: params.name, description: params.description}, { headers: { 'Authorization': token }})
+      const response = await axios.post(`${API_PATH}/courses`, { name: params.name, description: params.description}, { headers: { 'Authorization': token }})
       this.log(`${chalk.green('[SUCCESS]')} Course added with Id: ${response.data.courseId}`)
     } catch(err) {
       this.log(`${chalk.red('[ERROR]')} ${err.message}`)
@@ -31,7 +32,7 @@ export default class Add extends Command {
   private async addStream(params: any) {
     try {
       const token: string = await Auth.token()
-      const response = await axios.post(`http://127.0.0.1:5100/courses/${params.courseId}/streams`, { start: params.start, finish: params.finish}, { headers: { 'Authorization': token }})
+      const response = await axios.post(`${API_PATH}/courses/${params.courseId}/streams`, { start: params.start, finish: params.finish}, { headers: { 'Authorization': token }})
       this.log(`${chalk.green('[SUCCESS]')} Stream added with Id: ${response.data.streamId}`)
     } catch(err) {
       this.log(`${chalk.red('[ERROR]')} ${err.message}`)

@@ -5,6 +5,8 @@ import chalk from 'chalk'
 const Table  = require('cli-table')
 import { Auth } from '../auth'
 
+const { API_PATH } = require('../../config.js');
+
 export default class Mycourses extends Command {
   static description = 'Display list of private courses'
   static args = []
@@ -16,7 +18,7 @@ export default class Mycourses extends Command {
       this.log(`${chalk.red('[FAILED]')} You not yet authorized. Use login command`)
       return
     }
-    const response = await axios.get(`http://127.0.0.1:5100/courses`, { headers: { 'Authorization': token }})
+    const response = await axios.get(`${API_PATH}/courses`, { headers: { 'Authorization': token }})
     const table = new Table({
       head: [
         chalk.blueBright('_id'),

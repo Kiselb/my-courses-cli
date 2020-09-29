@@ -4,6 +4,8 @@ import axios from 'axios'
 import chalk from 'chalk'
 import { Auth } from '../auth'
 
+const { API_PATH } = require('../../config.js');
+
 export default class Login extends Command {
   static description = 'Login to my-courses application'
   static args = [{name: 'name'}]
@@ -17,7 +19,7 @@ export default class Login extends Command {
         name = await cli.prompt('Name')
       }
       password = await cli.prompt('Password', {type: 'hide'})
-      const response = await axios.post(`http://127.0.0.1:5100/login`, { name: name, password: password })
+      const response = await axios.post(`${API_PATH}/login`, { name: name, password: password })
       await Auth.login(response.headers['authorization'])
       this.log(`${chalk.green('[SUCCESS]')} You are logged in`)
     } catch(err) {

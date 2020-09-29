@@ -3,6 +3,8 @@ import axios from 'axios'
 import chalk from 'chalk'
 import { Auth } from '../auth'
 
+const { API_PATH } = require('../../config.js');
+
 export default class Logout extends Command {
   static description = 'Logout from my-courses application'
   static args = []
@@ -10,7 +12,7 @@ export default class Logout extends Command {
   async run() {
     const {args} = this.parse(Logout)
     try {
-      await axios.post(`http://127.0.0.1:5000/logout`, {})
+      await axios.post(`${API_PATH}/logout`, {})
       await Auth.logout()
       this.log(`${chalk.green('[SUCCESS]')} You are logged out`)
     } catch(err) {
